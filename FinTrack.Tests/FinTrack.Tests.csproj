@@ -18,4 +18,9 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FinTrack.Domain\FinTrack.Domain.csproj" />
+    <ProjectReference Include="..\FinTrack.Application\FinTrack.Application.csproj" />
+  </ItemGroup>
+
 </Project>
