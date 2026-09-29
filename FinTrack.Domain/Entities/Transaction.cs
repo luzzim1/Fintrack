@@ -16,6 +16,15 @@ public class Transaction
 
     public DateTimeOffset CreatedAt { get; private set; } = DateTimeOffset.UtcNow;
 
+    public Guid? UserId { get; private set; }
+
+    public void AssignOwner(Guid userId)
+    {
+        if (userId == Guid.Empty || UserId is not null)
+            throw new ArgumentException("Proprietário inválido ou já definido.");
+        UserId = userId;
+    }
+
     private Transaction() { }
 
     public Transaction(string description, decimal amount, TransactionType type, DateOnly date)

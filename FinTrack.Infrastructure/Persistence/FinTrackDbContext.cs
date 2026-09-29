@@ -6,6 +6,7 @@ namespace FinTrack.Infrastructure.Persistence;
 public class FinTrackDbContext : DbContext
 {
     public DbSet<Transaction> Transactions => Set<Transaction>();
+    public DbSet<User> Users => Set<User>();
 
     public FinTrackDbContext(DbContextOptions<FinTrackDbContext> options)
         : base(options)
