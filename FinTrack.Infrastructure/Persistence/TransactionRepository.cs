@@ -33,9 +33,20 @@ public class TransactionRepository(FinTrackDbContext db) : ITransactionRepositor
             Expense = group.Sum(transaction => transaction.Type == TransactionType.Expense ? transaction.Amount : 0),
             Count = group.Count()
         }).SingleOrDefaultAsync(ct);
-        var byCategory = await Project(query).GroupBy(transaction => new { transaction.CategoryId, transaction.CategoryName, transaction.Type })
-            .Select(group => new CategoryTotal(group.Key.CategoryId, group.Key.CategoryName ?? "Sem categoria", group.Key.Type, group.Sum(transaction => transaction.Amount)))
+        var categoryRows = await (
+            from transaction in query
+            join category in db.Categories on transaction.CategoryId equals category.Id into matches
+            from category in matches.DefaultIfEmpty()
+            group transaction by new { transaction.CategoryId, CategoryName = category == null ? null : category.Name, transaction.Type }
+            into grouped
+            select new
+            {
+                grouped.Key.CategoryId, grouped.Key.CategoryName, grouped.Key.Type,
+                Amount = grouped.Sum(transaction => transaction.Amount)
+            })
             .OrderByDescending(category => category.Amount).ToListAsync(ct);
+        var byCategory = categoryRows.Select(category => new CategoryTotal(category.CategoryId,
+            category.CategoryName ?? "Sem categoria", category.Type, category.Amount)).ToList();
         return new(totals?.Income ?? 0, totals?.Expense ?? 0, (totals?.Income ?? 0) - (totals?.Expense ?? 0), totals?.Count ?? 0, byCategory);
     }
 
