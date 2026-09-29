@@ -43,6 +43,50 @@ h2 { font-size: 1.45rem; letter-spacing: -.025em; }
 .workspace { padding: clamp(1.2rem, 3vw, 3rem); max-width: 1500px; width: 100%; margin: 0 auto; }
 .page-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.8rem; }
 .page-heading h1 { margin-bottom: .5rem; }
+.card { background: #fff; border: 1px solid #e0e5ec; border-radius: 12px; padding: 1.4rem; box-shadow: 0 8px 30px rgba(28, 45, 67, .04); }
+.card-title { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.card-title h2 { margin: 0; }
+.filters { display: grid; grid-template-columns: repeat(4, minmax(130px, 1fr)) auto; align-items: end; gap: .8rem; margin-bottom: 1.5rem; }
+.filters label { margin: 0; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.stat { background: #fff; border: 1px solid #e0e5ec; border-radius: 12px; padding: 1.3rem; display: grid; gap: .5rem; }
+.stat span { color: var(--muted); font-size: .8rem; }
+.stat strong { font-size: clamp(1.25rem, 3vw, 1.8rem); }
+.stat small { color: #d2ebe2; }
+.stat.accent { background: #176b57; color: #fff; border-color: #176b57; }
+.stat.accent span { color: #c4e4d8; }
+.income { color: #147258; }
+.expense { color: #bd3f4c; }
+.dashboard-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 1rem; }
+.category-row, .transaction-row { display: grid; align-items: center; gap: .75rem; border-top: 1px solid #edf0f4; padding: .9rem 0; }
+.category-row { grid-template-columns: auto 1fr auto auto; }
+.category-row small { color: var(--muted); }
+.transaction-row { grid-template-columns: 1fr auto; }
+.transaction-row div { display: grid; gap: .25rem; }
+.transaction-row small { color: var(--muted); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #d26771; }
+.income-bg { background: #2c9677; }
+.form-card { margin-bottom: 1.5rem; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1rem; }
+.form-grid .wide { grid-column: 1 / -1; }
+.form-actions { display: flex; justify-content: flex-end; gap: .7rem; }
+.loading, .empty { padding: 2.5rem 1rem; text-align: center; color: var(--muted); }
+.table-card { padding: 0; overflow: hidden; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 760px; }
+th, td { padding: 1rem; border-bottom: 1px solid #edf0f4; text-align: left; white-space: nowrap; }
+th { color: var(--muted); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; background: #fafbfc; }
+.right { text-align: right; }
+.row-actions { display: flex; justify-content: flex-end; gap: .4rem; }
+.row-actions button { padding: .45rem .65rem; }
+.badge { display: inline-flex; background: #fff0f1; color: #a73341; padding: .25rem .5rem; border-radius: 999px; font-size: .72rem; font-weight: 700; }
+.income-badge { background: #e5f6ef; color: #176b57; }
+.pagination { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; color: var(--muted); font-size: .85rem; }
+.pagination div { display: flex; gap: .5rem; }
+.category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; }
+.category-card { display: grid; gap: 1rem; }
+.category-card h2 { margin: 0; }
+.category-card div { display: flex; gap: .5rem; margin-top: .5rem; }
 @media (max-width: 760px) {
   .auth-layout { grid-template-columns: 1fr; }
   .auth-story { padding: 2rem; gap: 2rem; }
@@ -55,4 +99,10 @@ h2 { font-size: 1.45rem; letter-spacing: -.025em; }
   .sidebar-bottom { display: flex; align-items: center; justify-content: space-between; }
   .sidebar-bottom button { padding: .4rem .7rem; }
   .page-heading { align-items: flex-start; flex-wrap: wrap; }
+  .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .filters button { grid-column: 1 / -1; }
+  .stats, .dashboard-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .wide { grid-column: auto; }
+  .pagination { align-items: flex-start; flex-direction: column; }
 }

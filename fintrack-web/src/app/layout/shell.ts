@@ -12,6 +12,8 @@ import { Auth } from '../core/auth';
         <p class="nav-label">MINHAS FINANÇAS</p>
         <nav aria-label="Navegação principal">
           <a routerLink="/dashboard" routerLinkActive="active">Visão geral</a>
+          <a routerLink="/transactions" routerLinkActive="active">Movimentações</a>
+          <a routerLink="/categories" routerLinkActive="active">Categorias</a>
         </nav>
         <div class="sidebar-bottom"><span>{{ auth.session()?.name }}</span><button type="button" (click)="logout()">Sair da conta</button></div>
       </aside>
