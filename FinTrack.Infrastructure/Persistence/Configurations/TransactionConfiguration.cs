@@ -11,6 +11,8 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
         builder.ToTable("Transactions");
 
         builder.HasKey(transaction => transaction.Id);
+        builder.HasOne<Category>().WithMany().HasForeignKey(transaction => transaction.CategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
         builder.HasOne<User>().WithMany().HasForeignKey(transaction => transaction.UserId)
             .OnDelete(DeleteBehavior.Restrict);
         builder.HasIndex(transaction => new { transaction.UserId, transaction.Date });
