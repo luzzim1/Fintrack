@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+:root { font-family: Inter, "Segoe UI", sans-serif; color: #182539; background: #f3f5f8; font-synthesis: none; --primary: #176b57; --muted: #68768a; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: var(--primary); text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; border: 1px solid #d8dee8; padding: .7rem 1rem; border-radius: 8px; background: white; color: #24354a; font-weight: 600; }
+button:hover { filter: brightness(.96); }
+button:disabled { cursor: not-allowed; opacity: .55; }
+button.primary { background: var(--primary); color: white; border-color: var(--primary); }
+button.danger { color: #b43443; }
+.full { width: 100%; margin-top: 1.2rem; }
+input, select { width: 100%; min-width: 0; border: 1px solid #cad3df; border-radius: 8px; padding: .75rem; background: #fff; color: #182539; }
+input:focus, select:focus, button:focus-visible, a:focus-visible { outline: 3px solid #96cebb; outline-offset: 2px; }
+label { display: grid; gap: .45rem; font-size: .875rem; font-weight: 600; margin-bottom: 1rem; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: clamp(1.65rem, 3vw, 2.15rem); letter-spacing: -.05em; }
+h2 { font-size: 1.45rem; letter-spacing: -.025em; }
+.muted { color: var(--muted); line-height: 1.6; }
+.eyebrow { color: var(--primary); font-size: .7rem; letter-spacing: .14em; font-weight: 750; margin-bottom: .75rem; }
+.brand { display: flex; align-items: center; gap: .8rem; color: #a3e7c9; font-weight: 800; font-size: 1.2rem; letter-spacing: -.06em; }
+.brand span { color: #fff; letter-spacing: -.035em; font-size: 1.45rem; }
+.auth-layout { min-height: 100dvh; display: grid; grid-template-columns: 1fr 1fr; }
+.auth-story { background: #152d2b; color: #fff; padding: clamp(2rem, 6vw, 6rem); display: flex; flex-direction: column; justify-content: space-between; gap: 3rem; }
+.auth-story h1 { font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 1.13; }
+.auth-story p:not(.eyebrow) { max-width: 28rem; color: #b5d0c8; line-height: 1.8; }
+.auth-story .eyebrow { color: #92d7b7; }
+.subtle { color: #98b4ad; font-size: .8rem; }
+.auth-form { display: grid; place-items: center; padding: 2rem; }
+.auth-form .panel { width: 100%; max-width: 430px; }
+.auth-switch { margin: 1.5rem 0 0; text-align: center; font-size: .9rem; color: var(--muted); }
+.auth-switch a { font-weight: 600; }
+.field-error { color: #ae293b; display: block; margin: -.5rem 0 1rem; }
+.alert { padding: 1rem; border-radius: 8px; margin-bottom: 1rem; line-height: 1.5; }
+.error { background: #fff0f1; color: #a32939; border: 1px solid #f7d0d6; }
+.app-layout { min-height: 100dvh; display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.sidebar { padding: 2.2rem 1.5rem; background: #162b2b; color: #fff; display: flex; flex-direction: column; gap: 2rem; }
+.nav-label { font-size: .65rem; letter-spacing: .13em; color: #8caaa4; margin: 1rem 0 -.9rem; }
+.sidebar nav { display: grid; gap: .5rem; }
+.sidebar nav a { color: #b7cbc6; padding: .9rem 1rem; border-radius: 8px; }
+.sidebar nav a.active { background: #29453f; color: #b8f1d5; font-weight: 650; }
+.sidebar-bottom { margin-top: auto; display: grid; gap: 1rem; font-size: .9rem; }
+.sidebar-bottom button { background: transparent; color: #b7cbc6; border-color: #3d534e; }
+.workspace { padding: clamp(1.2rem, 3vw, 3rem); max-width: 1500px; width: 100%; margin: 0 auto; }
+.page-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.8rem; }
+.page-heading h1 { margin-bottom: .5rem; }
+@media (max-width: 760px) {
+  .auth-layout { grid-template-columns: 1fr; }
+  .auth-story { padding: 2rem; gap: 2rem; }
+  .auth-story .subtle { display: none; }
+  .app-layout { grid-template-columns: 1fr; }
+  .sidebar { padding: 1rem; gap: .9rem; }
+  .nav-label { display: none; }
+  .sidebar nav { display: flex; flex-wrap: wrap; gap: .2rem; }
+  .sidebar nav a { padding: .6rem; font-size: .85rem; }
+  .sidebar-bottom { display: flex; align-items: center; justify-content: space-between; }
+  .sidebar-bottom button { padding: .4rem .7rem; }
+  .page-heading { align-items: flex-start; flex-wrap: wrap; }
+}
