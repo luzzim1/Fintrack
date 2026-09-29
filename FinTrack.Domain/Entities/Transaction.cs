@@ -17,6 +17,13 @@ public class Transaction
     public DateTimeOffset CreatedAt { get; private set; } = DateTimeOffset.UtcNow;
 
     public Guid? UserId { get; private set; }
+    public Guid? CategoryId { get; private set; }
+
+    public void AssignCategory(Guid? categoryId)
+    {
+        if (categoryId == Guid.Empty) throw new ArgumentException("Categoria inválida.");
+        CategoryId = categoryId;
+    }
 
     public void AssignOwner(Guid userId)
     {

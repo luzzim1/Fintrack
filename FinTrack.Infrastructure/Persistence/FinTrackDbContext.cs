@@ -7,6 +7,7 @@ public class FinTrackDbContext : DbContext
 {
     public DbSet<Transaction> Transactions => Set<Transaction>();
     public DbSet<User> Users => Set<User>();
+    public DbSet<Category> Categories => Set<Category>();
 
     public FinTrackDbContext(DbContextOptions<FinTrackDbContext> options)
         : base(options)

@@ -2,6 +2,7 @@ using System.Text;
 using System.Threading.RateLimiting;
 using FinTrack.Api.Errors;
 using FinTrack.Application.Auth;
+using FinTrack.Application.Categories;
 using FinTrack.Infrastructure.Auth;
 using FinTrack.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<IPasswordService, PasswordService>();
 builder.Services.AddScoped<ITokenIssuer, TokenIssuer>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<CategoryService>();
 builder.Services.AddOptions<JwtSettings>().Bind(builder.Configuration.GetSection("Jwt"))
     .Validate(settings => Encoding.UTF8.GetByteCount(settings.Key) >= 32, "Configure Jwt:Key com pelo menos 32 bytes.")
     .Validate(settings => settings.LifetimeMinutes is > 0 and <= 120, "Validade JWT deve ser de 1 a 120 minutos.")
