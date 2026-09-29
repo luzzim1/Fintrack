@@ -67,6 +67,11 @@ app.UseRateLimiter();
 app.MapControllers();
 app.MapGet("/health", () => Results.Ok(new { status = "ok" })).AllowAnonymous();
 if (app.Environment.IsDevelopment()) app.MapOpenApi().AllowAnonymous();
+if (builder.Configuration.GetValue<bool>("Database:MigrateOnStartup"))
+{
+    await using var scope = app.Services.CreateAsyncScope();
+    await scope.ServiceProvider.GetRequiredService<FinTrackDbContext>().Database.MigrateAsync();
+}
 app.Run();
 
 public partial class Program { }
