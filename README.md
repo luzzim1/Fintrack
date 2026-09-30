@@ -133,12 +133,6 @@ npm test -- --watch=false
 
 Os testes de integração criam um banco `FinTrack_Tests_<id>`, aplicam todas as migrations e removem a base ao terminar. Por padrão usam SQL Server local com autenticação integrada. Em CI, `FINTRACK_TEST_CONNECTION` fornece apenas a conexão efêmera criada durante o job.
 
-## Interface
-
-![Tela de login responsiva do FinTrack](docs/screenshots/login.png)
-
-![Dashboard financeiro do FinTrack](docs/screenshots/dashboard.png)
-
 ## Estrutura
 
 ```text
@@ -154,7 +148,3 @@ Fintrack/
 ├── .github/workflows/ci.yml
 └── docker-compose.yml
 ```
-
-## Pontos para estudar
-
-Comece pelas invariantes em `FinTrack.Domain/Entities`, acompanhe um caso de uso em `FinTrack.Application`, veja sua implementação nos repositórios de `FinTrack.Infrastructure` e termine no controller correspondente. Depois depure o interceptor e o guard do Angular, observando como o token chega à API. Os testes de integração em `FinTrack.Tests/Integration` mostram o fluxo completo e são um bom lugar para colocar breakpoints antes de alterar comportamento.
